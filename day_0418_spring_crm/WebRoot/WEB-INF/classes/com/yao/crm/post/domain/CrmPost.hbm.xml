@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.yao.crm.post.domain.CrmPost" table="crm_post">
+		<id name="postId">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="postName"></property>		
+	
+	<!-- 多对一 -->
+	<many-to-one name="department" class="com.yao.crm.department.domain.CrmDepartment" column="depId"></many-to-one>
+	
+	<!-- 一对多 -->
+	<set name="staffSet">
+	<key column="postId"></key>
+	<one-to-many class="com.yao.crm.staff.domain.CrmStaff"/>
+	</set>
+		
+	</class>
+
+</hibernate-mapping>
