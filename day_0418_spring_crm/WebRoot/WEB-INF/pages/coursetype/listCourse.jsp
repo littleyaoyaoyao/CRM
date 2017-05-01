@@ -38,27 +38,30 @@
 
 
 <%--条件查询 start --%>
-
-<form action="${pageContext.request.contextPath}/coursetype/courseTypeAction_findAll.action" method="post">
+<s:form action="courseTypeAction_findAll" namespace="/">
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	  <tr>
 	    <td width="10%">课程类别：</td>
-	    <td><input type="text" name="courseName" size="30" value="" /></td>
+	    <td><s:textfield name="courseName" size="30"></s:textfield></td>
 	  </tr>
 	  <tr>
 	    <td >课程简介：</td>
-	    <td > <input type="text" name="remark" size="30" value="" /></td>
+	    <td ><s:textfield name="remark" size="30"></s:textfield></td>
 	  </tr>
 	  <tr>  
 	    <td >总学时：</td>
-	    <td ><input type="text" name="totalStart" size="12" value="" />  至  <input type="text" name="totalEnd" size="12" value="" /></td>
+	    <td ><s:textfield name="totalStart" size="12"></s:textfield>  
+	    	至 
+	     	 <s:textfield name="totalEnd" size="12"></s:textfield></td>
 	  </tr>
 	  <tr>
 	    <td>课程费用：</td>
-	    <td ><input type="text" name="lessonCostStart" size="12" value="" /> 至 <input type="text" name="lessonCostEnd" size="12" value="" /></td>
+	    <td ><s:textfield name="courseCostStart" size="12"></s:textfield> 
+	    	至 
+	    	 <s:textfield name="courseCostEnd" size="12"></s:textfield></td>
 	  </tr>
 	</table>
-</form>
+</s:form>
 
 <%--条件查询 end --%>
 
@@ -77,7 +80,7 @@
 	<td width="11%" align="center">编辑</td>
   </tr>
   <%--数据展示，单行：tabtd1；双行：tabtd2 --%>
-  <s:iterator value="#allCourseType" var="vs"></s:iterator>
+  <s:iterator value="#allCourseType" var="vs">
    <tr class="tabtd1">
 	    <td align="center"><s:property value="courseName"/></td>
 	    <td align="center"><s:property value="remark"/></td>
@@ -88,7 +91,7 @@
 	  		<a href="${pageContext.request.contextPath}/pages/coursetype/addOrEditCourse.jsp"><img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img" /></a>
 	  	</td>
 	  </tr>
-
+</s:iterator>
  
 </table>
 <table border="0" cellspacing="0" cellpadding="0" align="center">

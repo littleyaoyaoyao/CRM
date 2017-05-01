@@ -15,4 +15,11 @@ public class CourseTypeDaoImpl extends HibernateDaoSupport implements
 		return this.getHibernateTemplate().find("from CrmCourseType");
 	}
 
+	@Override
+	public List<CrmCourseType> findAll(String condition, Object[] params) {
+		String hql="from CrmCourseType where 1=1 "+ condition;
+		//因为这部分的find语句条件的特点，所以在action和service中需要这样构造
+		return this.getHibernateTemplate().find(hql,params);
+	}
+
 }

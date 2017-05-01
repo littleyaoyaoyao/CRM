@@ -15,7 +15,7 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<CrmCo
 	
 	@Override
 	public CrmCourseType getModel() {
-		return null;
+		return courseType;
 	}
 	
 	private CourseTypeService courseTypeService;
@@ -29,7 +29,10 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<CrmCo
 	 * @return
 	 */
 	public String findAll(){
-		List<CrmCourseType> allCourseType = this.courseTypeService.findAll();
+//		List<CrmCourseType> allCourseType = this.courseTypeService.findAll();
+//		ActionContext.getContext().put("allCourseType", allCourseType);
+		
+		List<CrmCourseType> allCourseType = this.courseTypeService.findAll(courseType);
 		ActionContext.getContext().put("allCourseType", allCourseType);
 		
 		return "findAll";

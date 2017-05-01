@@ -10,4 +10,12 @@ public interface CourseTypeDao {
 	 * @return
 	 */
 	public List<CrmCourseType> findAll();
+
+	/**
+	 * 按条件查询所有
+	 * @param condition
+	 * @param params
+	 * @return
+	 */
+	public List<CrmCourseType> findAll(String condition, Object[] params);
 }

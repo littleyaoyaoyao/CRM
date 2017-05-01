@@ -10,4 +10,11 @@ public interface CourseTypeService {
 	 * @return
 	 */
 	public List<CrmCourseType> findAll();
+
+	/**
+	 * 按条件查询所有
+	 * @param courseType
+	 * @return
+	 */
+	public List<CrmCourseType> findAll(CrmCourseType courseType);
 }
