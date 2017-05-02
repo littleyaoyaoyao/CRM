@@ -2,6 +2,8 @@ package com.yao.crm.coursetype.web.action;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -38,5 +40,22 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<CrmCo
 		return "findAll";
 	}
 		
+	
+	//---------------------------------------------------------------------
+	
+	public String addOrEditUI(){
+		//都会执行return语句，但是如果是编辑功能，会将findCourseType放入栈顶，方便于信息回显
+		if(StringUtils.isNotBlank(this.courseType.getCourseTypeId())){
+			CrmCourseType findCourseType = this.courseTypeService.findById(this.courseType.getCourseTypeId());
+			ActionContext.getContext().getValueStack().push(findCourseType);
+		}
+		return "addOrEditUI";
+	}
+	
+	
+	public String addOrEdit(){
+		this.courseTypeService.addOrEdit(courseType);
+		return "addOrEdit";
+	}
 
 }

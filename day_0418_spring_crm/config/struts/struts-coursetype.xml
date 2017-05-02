@@ -6,6 +6,8 @@
 	<package name="course" namespace="/" extends="common-property">
 		<action name="courseTypeAction_*" class="com.yao.crm.coursetype.web.action.CourseTypeAction" method="{1}">
 			<result name="findAll">/WEB-INF/pages/coursetype/listCourse.jsp</result>
+			<result name="addOrEditUI">/WEB-INF/pages/coursetype/addOrEditCourse.jsp</result>
+			<result name="addOrEdit" type="redirectAction">courseTypeAction_findAll</result>
 		</action>
 	</package>
 </struts>
