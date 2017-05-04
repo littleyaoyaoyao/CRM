@@ -39,6 +39,7 @@
 
 <%--条件查询 start --%>
 <s:form action="courseTypeAction_findAll" namespace="/">
+	<s:hidden id="pageNum" name="pageNum" value="1"></s:hidden>
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	  <tr>
 	    <td width="10%">课程类别：</td>
@@ -80,7 +81,7 @@
 	<td width="11%" align="center">编辑</td>
   </tr>
   <%--数据展示，单行：tabtd1；双行：tabtd2 --%>
-  <s:iterator value="#allCourseType" var="vs">
+  <s:iterator value="#pageBean.data" var="vs">
    <tr class="tabtd1">
 	    <td align="center"><s:property value="courseName"/></td>
 	    <td align="center"><s:property value="remark"/></td>
@@ -100,15 +101,29 @@
 <table border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td align="right">
-    	<span>第1/3页</span>
+    	<span>第<s:property value="#pageBean.pageNum"/>/<s:property value="#pageBean.totalPage"/>页</span>
         <span>
-        	<a href="#">[首页]</a>&nbsp;&nbsp;
-            <a href="#">[上一页]</a>&nbsp;&nbsp;
-            <a href="#">[下一页]</a>&nbsp;&nbsp;
-            <a href="#">[尾页]</a>
+        	<s:if test="#pageBean.pageNum gt 1">
+        	<a href="javascript:void(0)" onclick="showPage(1)">[首页]</a>&nbsp;&nbsp;
+            <a href="javascript:void(0)" onclick="showPage(<s:property value="#pageBean.pageNum - 1"/>)">[上一页]</a>&nbsp;&nbsp;
+        	</s:if>
+        	<s:if test="#pageBean.pageNum lt #pageBean.totalPage">
+            <a href="javascript:void(0)" onclick="showPage(<s:property value="#pageBean.pageNum + 1"/>)">[下一页]</a>&nbsp;&nbsp;
+            <a href="javascript:void(0)" onclick="showPage(<s:property value="#pageBean.totalPage"/>)">[尾页]</a>
+        	</s:if>
         </span>
     </td>
   </tr>
 </table>
+	
+
+<script type="text/javascript">
+		function showPage(num){
+			//1 修改隐藏域的值
+			document.getElementById("pageNum").value = num;
+			//2 提交表单
+			document.forms[0].submit();
+		}
+</script>
 </body>
 </html>

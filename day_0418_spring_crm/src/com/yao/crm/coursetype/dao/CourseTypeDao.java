@@ -35,5 +35,26 @@ public interface CourseTypeDao {
 	 * @param courseType
 	 */
 	public void saveOrUpdate(CrmCourseType courseType);
+	
+	//-------------------------------------------------------
+	
+	/**
+	 * 查询总记录条数 ，以用于分页使用
+	 * @param condition
+	 * @param params
+	 * @return
+	 */
+	public int getTotalRecord(String condition , Object[] params);
+	
+	
+	/**
+	 * 分页，查询结果（带条件）
+	 * @param condition
+	 * @param params
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<CrmCourseType> findAll(String condition , Object[] params , int startIndex , int pageSize);
 
 }
