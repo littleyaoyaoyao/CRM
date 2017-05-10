@@ -2,6 +2,7 @@ package com.yao.crm.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.UUID;
 
 public class MyStringUtils {
 	public static String getMD5Value(String value){
@@ -21,6 +22,10 @@ public class MyStringUtils {
 			//如果出现了异常，将默认值
 			//return value;
 		}
+	}
+	
+	public static String getUUID(){
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 
 }

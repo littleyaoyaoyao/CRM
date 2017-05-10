@@ -12,6 +12,7 @@
 </head>
 
 <body >
+
  <table border="0" cellspacing="0" cellpadding="0" width="100%">
   <tr>
     <td class="topg"></td>
@@ -71,8 +72,8 @@
     <td ><img src="${pageContext.request.contextPath}/images/result.gif"/></td>
   </tr>
 </table>
+  <s:debug></s:debug>
 <table width="97%" border="1" >
-  
   <tr class="henglan" style="font-weight:bold;">
     <td width="14%" align="center">名称</td>
     <td width="33%" align="center">简介</td>
